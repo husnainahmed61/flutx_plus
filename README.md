@@ -1,4 +1,4 @@
-# flutx
+# flutx_plus
 
 A new Flutter package project.
 
