@@ -9,10 +9,10 @@
 ///
 
 import 'package:flutter/material.dart';
-import 'package:flutx/styles/styles.dart';
+import 'package:flutx_plus/styles/styles.dart';
 
-import 'package:flutx/utils/spacing.dart';
-import 'package:flutx/widgets/container/container.dart';
+import 'package:flutx_plus/utils/spacing.dart';
+import 'package:flutx_plus/widgets/container/container.dart';
 
 import 'bottom_navigation_bar_item.dart';
 

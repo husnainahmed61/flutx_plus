@@ -4,7 +4,7 @@
 // In Development
 // /// [FxCustomRating] - able to give customisable rating widget with custom features.
 // import 'package:flutter/material.dart';
-// import 'package:flutx/utils/color_utils.dart';
+// import 'package:flutx_plus/utils/color_utils.dart';
 //
 // typedef void OnRatingChange(int rating);
 //

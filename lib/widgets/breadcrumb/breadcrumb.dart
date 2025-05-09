@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/flutx.dart';
+import 'package:flutx_plus/flutx.dart';
 
 class FxBreadcrumb extends StatelessWidget {
   final List<FxBreadcrumbItem> children;

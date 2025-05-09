@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/core/tuple.dart';
-import 'package:flutx/extensions/string_extension.dart';
+import 'package:flutx_plus/core/tuple.dart';
+import 'package:flutx_plus/extensions/string_extension.dart';
 
 typedef FxFieldValidator = String? Function(String? value);
 

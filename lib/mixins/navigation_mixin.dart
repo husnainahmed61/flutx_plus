@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/flutx.dart';
+import 'package:flutx_plus/flutx.dart';
 
 mixin FxNavigationMixin on FxController {
   Future<T?> push<T>(Widget widget) {

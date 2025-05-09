@@ -17,7 +17,7 @@ export 'widgets/widgets.dart';
 export 'fx.dart';
 
 export 'styles/styles.dart';
-export 'package:flutx/responsive/responsive.dart';
+export 'package:flutx_plus/responsive/responsive.dart';
 
 //Routes
 export 'router/router.dart';

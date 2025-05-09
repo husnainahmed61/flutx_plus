@@ -1,4 +1,4 @@
-import 'package:flutx/flutx.dart';
+import 'package:flutx_plus/flutx.dart';
 
 class FxEmailValidator extends FxFieldValidatorRule<String> {
 

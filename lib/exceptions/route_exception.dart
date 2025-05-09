@@ -1,4 +1,4 @@
-import 'package:flutx/exceptions/base_exception.dart';
+import 'package:flutx_plus/exceptions/base_exception.dart';
 
 class RouteException extends BaseException {
   final String message;

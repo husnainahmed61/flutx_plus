@@ -2,7 +2,7 @@
 //
 // typedef MediaQ = Map<String, Property<int>>;
 
-import 'package:flutx/responsive/display_type.dart';
+import 'package:flutx_plus/responsive/display_type.dart';
 
 import 'screen_media_type.dart';
 

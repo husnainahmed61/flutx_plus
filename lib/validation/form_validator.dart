@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/extensions/string_extension.dart';
-import 'package:flutx/validation/field_validator.dart';
+import 'package:flutx_plus/extensions/string_extension.dart';
+import 'package:flutx_plus/validation/field_validator.dart';
 
 class FxFormValidator {
   Map<String, dynamic> errors = {};

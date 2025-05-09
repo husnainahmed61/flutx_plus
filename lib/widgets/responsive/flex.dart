@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/responsive/responsive.dart';
-import 'package:flutx/utils/spacing.dart';
+import 'package:flutx_plus/responsive/responsive.dart';
+import 'package:flutx_plus/utils/spacing.dart';
 
 import 'flex_item.dart';
 import 'responsive.dart';

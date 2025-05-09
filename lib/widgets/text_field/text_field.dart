@@ -11,8 +11,8 @@ import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutx/styles/styles.dart';
-import 'package:flutx/utils/spacing.dart';
+import 'package:flutx_plus/styles/styles.dart';
+import 'package:flutx_plus/utils/spacing.dart';
 
 //@Deprecated("This widget is still in under maintenance. Try to use material widget")
 enum FxTextFieldType { email, password, name, address, mobileNumber }

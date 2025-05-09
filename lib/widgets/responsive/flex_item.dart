@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/responsive/responsive.dart';
+import 'package:flutx_plus/responsive/responsive.dart';
 
 class FxFlexItem extends StatelessWidget {
   final Widget child;

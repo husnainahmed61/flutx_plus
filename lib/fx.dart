@@ -5,8 +5,8 @@
 library flutx;
 
 import 'package:flutter/material.dart';
-import 'package:flutx/responsive/responsive.dart';
-import 'package:flutx/styles/styles.dart';
+import 'package:flutx_plus/responsive/responsive.dart';
+import 'package:flutx_plus/styles/styles.dart';
 
 class Fx {
   // entry point of the package

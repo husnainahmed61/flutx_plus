@@ -6,7 +6,7 @@
 /// Still in development
 
 import 'package:flutter/material.dart';
-import 'package:flutx/exceptions/route_exception.dart';
+import 'package:flutx_plus/exceptions/route_exception.dart';
 
 import 'middlewares/middleware.dart';
 import 'route.dart';

@@ -8,9 +8,9 @@
 /// [FxContainer.rounded] - provides rounded shape to the container for the given height and width of the container.
 
 import 'package:flutter/material.dart';
-import 'package:flutx/styles/styles.dart';
+import 'package:flutx_plus/styles/styles.dart';
 
-import 'package:flutx/utils/spacing.dart';
+import 'package:flutx_plus/utils/spacing.dart';
 
 class FxContainer extends StatelessWidget {
   final Widget? child;

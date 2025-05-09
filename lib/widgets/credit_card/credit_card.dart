@@ -10,13 +10,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutx/styles/styles.dart';
+import 'package:flutx_plus/styles/styles.dart';
 
-import 'package:flutx/utils/spacing.dart';
-import 'package:flutx/widgets/text/text.dart';
-import 'package:flutx/widgets/text_field/text_field.dart';
-import 'package:flutx/utils/formatters/card_month_input_formatter.dart';
-import 'package:flutx/utils/formatters/card_number_input_formatter.dart';
+import 'package:flutx_plus/utils/spacing.dart';
+import 'package:flutx_plus/widgets/text/text.dart';
+import 'package:flutx_plus/widgets/text_field/text_field.dart';
+import 'package:flutx_plus/utils/formatters/card_month_input_formatter.dart';
+import 'package:flutx_plus/utils/formatters/card_number_input_formatter.dart';
 
 typedef void OnCreditCardNumberChanged(String creditCardNumber);
 typedef void OnCreditCardDateChanged(String creditCardDate);

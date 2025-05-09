@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/widgets/dotted_border/dash_painter.dart';
+import 'package:flutx_plus/widgets/dotted_border/dash_painter.dart';
 
 class DottedBorder extends StatelessWidget {
   final Widget child;
