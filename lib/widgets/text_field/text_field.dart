@@ -532,10 +532,7 @@ class _FxTextFieldState extends State<FxTextField> {
           labelText = "Mobile Number";
           keyboardType = keyboardType ?? TextInputType.phone;
           break;
-        default:
-          labelText = "Label";
-          break;
-      }
+        }
     }
   }
 
