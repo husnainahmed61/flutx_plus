@@ -62,7 +62,6 @@ class FxScreenMedia {
 
     List<String> data = string.split(" ");
     for (String item in data) {
-      bool found = false;
       for (var type in FxScreenMediaType.values) {
         if (item.contains(type.className)) {
           FxDisplayType displayType = FxDisplayType.fromString(
