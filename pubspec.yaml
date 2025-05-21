@@ -1,6 +1,6 @@
 name: flutx_plus
 description: A powerful Flutter utility library that enhances UI development with reusable widgets, styling extensions, and layout helpers. Built for speed and simplicity.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/husnainahmed61/flutx_plus
 
 environment:

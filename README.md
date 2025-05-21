@@ -26,7 +26,7 @@ To get started, install the package and import it in your Dart file.
 Add this to your `pubspec.yaml`:
 
 dependencies:
-flutx_plus: ^1.0.0
+flutx_plus: ^1.0.3
 
 Then run:
 
