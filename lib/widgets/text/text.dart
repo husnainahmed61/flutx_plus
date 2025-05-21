@@ -34,7 +34,7 @@ class FxText extends StatelessWidget {
   final StrutStyle? strutStyle;
   final TextDirection? textDirection;
   final TextHeightBehavior? textHeightBehavior;
-  final double? textScaleFactor;
+  final TextScaler? textScaleFactor;
   final TextWidthBasis? textWidthBasis;
 
   FxText(this.text,
@@ -467,7 +467,7 @@ class FxText extends StatelessWidget {
       strutStyle: strutStyle,
       textDirection: textDirection ?? FxAppTheme.textDirection,
       textHeightBehavior: textHeightBehavior,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaleFactor,
       textWidthBasis: textWidthBasis,
       key: key,
     );

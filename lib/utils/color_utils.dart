@@ -25,9 +25,9 @@ class FxColorUtils {
 
   int brightness(Color c) {
     return math
-        .sqrt(c.red * c.red * .241 +
-            c.green * c.green * .691 +
-            c.blue * c.blue * .068)
+        .sqrt(c.r * c.r * .241 +
+            c.g * c.g * .691 +
+            c.b * c.b * .068)
         .toInt();
   }
 }

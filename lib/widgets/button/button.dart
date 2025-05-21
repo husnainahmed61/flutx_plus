@@ -23,27 +23,27 @@ class FxButton extends StatelessWidget {
   final bool? block;
   final bool soft;
 
-  final MaterialStateProperty<EdgeInsetsGeometry>? msPadding;
+  final WidgetStateProperty<EdgeInsetsGeometry>? msPadding;
   final EdgeInsetsGeometry? padding;
 
-  final MaterialStateProperty<double>? msElevation;
+  final WidgetStateProperty<double>? msElevation;
   final double? elevation;
 
-  final MaterialStateProperty<EdgeInsetsGeometry>? msShape;
+  final WidgetStateProperty<EdgeInsetsGeometry>? msShape;
   final OutlinedBorder? shape;
   final BorderRadiusGeometry? borderRadius;
   final double? borderRadiusAll;
 
-  final MaterialStateProperty<Color>? msBackgroundColor;
+  final WidgetStateProperty<Color>? msBackgroundColor;
   final Color? backgroundColor;
 
-  final MaterialStateProperty<BorderSide>? msSide;
+  final WidgetStateProperty<BorderSide>? msSide;
   final BorderSide? side;
   final Color borderColor;
 
   final MaterialTapTargetSize? tapTargetSize;
 
-  final MaterialStateProperty<Color>? msShadowColor;
+  final WidgetStateProperty<Color>? msShadowColor;
   final Color? shadowColor;
 
   final Color? splashColor;
@@ -271,17 +271,17 @@ class FxButton extends StatelessWidget {
             ButtonStyle(
                 tapTargetSize: tapTargetSize,
                 side: msSide ??
-                    MaterialStateProperty.all(side ??
+                    WidgetStateProperty.all(side ??
                         BorderSide(
                           color: soft ? borderColor.withAlpha(100) : borderColor,
                           width: soft ? 0.8 : 1,
                         )),
-                overlayColor: MaterialStateProperty.all(splashColor ?? (bgColor.withAlpha(40))),
-                backgroundColor: soft ? MaterialStateProperty.all(borderColor.withAlpha(40)) : null,
-                foregroundColor: MaterialStateProperty.all(borderColor.withAlpha(40)),
-                shadowColor: msShadowColor ?? MaterialStateProperty.all(shadowColor),
-                padding: msPadding ?? MaterialStateProperty.all(padding),
-                shape: MaterialStateProperty.all(shape ??
+                overlayColor: WidgetStateProperty.all(splashColor ?? (bgColor.withAlpha(40))),
+                backgroundColor: soft ? WidgetStateProperty.all(borderColor.withAlpha(40)) : null,
+                foregroundColor: WidgetStateProperty.all(borderColor.withAlpha(40)),
+                shadowColor: msShadowColor ?? WidgetStateProperty.all(shadowColor),
+                padding: msPadding ?? WidgetStateProperty.all(padding),
+                shape: WidgetStateProperty.all(shape ??
                     RoundedRectangleBorder(
                       borderRadius:
                       BorderRadius.circular(borderRadiusAll ?? FxConstant.constant.buttonRadius),
@@ -294,28 +294,28 @@ class FxButton extends StatelessWidget {
                   tapTargetSize: tapTargetSize,
                   visualDensity: VisualDensity.compact,
                   elevation: msElevation ??
-                      MaterialStateProperty.resolveWith<double>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.disabled))
+                      WidgetStateProperty.resolveWith<double>(
+                            (Set<WidgetState> states) {
+                          if (states.contains(WidgetState.disabled))
                             return 0;
-                          else if (states.contains(MaterialState.pressed))
+                          else if (states.contains(WidgetState.pressed))
                             return elevation! * 2;
-                          else if (states.contains(MaterialState.hovered)) return elevation! * 1.5;
+                          else if (states.contains(WidgetState.hovered)) return elevation! * 1.5;
                           return elevation!;
                         },
                       ),
                   backgroundColor: msBackgroundColor ??
-                      MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.disabled)) return bgColor.withAlpha(100);
+                      WidgetStateProperty.resolveWith<Color>(
+                            (Set<WidgetState> states) {
+                          if (states.contains(WidgetState.disabled)) return bgColor.withAlpha(100);
                           return bgColor;
                         },
                       ),
-                  shadowColor: msShadowColor ?? MaterialStateProperty.all(shadowColor ?? bgColor),
-                  padding: msPadding ?? MaterialStateProperty.all(padding),
-                  overlayColor: MaterialStateProperty.all(
+                  shadowColor: msShadowColor ?? WidgetStateProperty.all(shadowColor ?? bgColor),
+                  padding: msPadding ?? WidgetStateProperty.all(padding),
+                  overlayColor: WidgetStateProperty.all(
                       splashColor ?? (Theme.of(context).colorScheme.onPrimary.withAlpha(36))),
-                  shape: MaterialStateProperty.all(shape ??
+                  shape: WidgetStateProperty.all(shape ??
                       RoundedRectangleBorder(
                         borderRadius:
                         BorderRadius.circular(borderRadiusAll ?? FxConstant.constant.buttonRadius),
@@ -325,8 +325,8 @@ class FxButton extends StatelessWidget {
     } else {
       button = TextButton(
         style: ButtonStyle(
-            overlayColor: MaterialStateProperty.all(splashColor ?? (bgColor.withAlpha(40))),
-            padding: msPadding ?? MaterialStateProperty.all(padding),
+            overlayColor: WidgetStateProperty.all(splashColor ?? (bgColor.withAlpha(40))),
+            padding: msPadding ?? WidgetStateProperty.all(padding),
             // visualDensity: VisualDensity.standard,
 
             tapTargetSize: tapTargetSize),

@@ -8,7 +8,6 @@
 // found in the LICENSE file.
 
 /// [FxTextStyle] - gives 13 different type of styles to the text on the basis of size
-import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +98,7 @@ class FxTextStyle {
         ? fontSize
         : (textStyle == null ? 40 : textStyle.fontSize);
 
-    Color finalColor = color ?? FxAppTheme.theme.colorScheme.onBackground;
+    Color finalColor = color ?? FxAppTheme.theme.colorScheme.onSurface;
     finalColor = xMuted
         ? finalColor.withAlpha(160)
         : (muted ? finalColor.withAlpha(200) : finalColor);

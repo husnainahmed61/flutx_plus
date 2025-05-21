@@ -14,7 +14,7 @@ export 'two_tone_mdi_icons.dart';
 
 class FxTwoToneIcon extends StatefulWidget {
   final FxTwoToneIconData iconData;
-  final Color? color;
+  final ColorFilter? color;
   final double? size;
 
   const FxTwoToneIcon(this.iconData, {this.color, this.size = 24});
@@ -45,7 +45,7 @@ class _FxTwoToneIconState extends State<FxTwoToneIcon> {
         ? Container()
         : SvgPicture.string(
             iconDataString!,
-            color: widget.color,
+            colorFilter: widget.color,
             width: widget.size,
             height: widget.size,
           );

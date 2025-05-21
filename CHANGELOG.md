@@ -18,6 +18,9 @@
 * Updated: dependency packages.
 ## 1.0.2
 * Updated: dependency packages and static analysis.
-## 1.0.2
+## 1.0.3
+
+* Updated: static analysis.
+## 1.0.4
 
 * Updated: static analysis.

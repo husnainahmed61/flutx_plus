@@ -416,7 +416,6 @@ class _FxTextFieldState extends State<FxTextField> {
       strutStyle: widget.strutStyle,
       textAlignVertical: widget.textAlignVertical,
       textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
-      toolbarOptions: widget.toolbarOptions,
       contextMenuBuilder: widget.contextMenuBuilder,
       textInputAction: widget.textInputAction,
       textDirection: widget.textDirection,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutx_plus/core/tuple.dart';
 import 'package:flutx_plus/extensions/string_extension.dart';
 
 typedef FxFieldValidator = String? Function(String? value);
@@ -68,13 +67,15 @@ mixin FxFormDataMixin {
     return formKey.currentState?.validate() ?? false;
   }
 
-  Tuple2<bool, Map<String, dynamic>> validateFormWithErrors(
+  (bool, Map<String, dynamic>) validateFormWithErrors(
       Map<String, dynamic> errors,
       {bool consumeError = true}) {
     this.errors = errors;
     this.remainingError = {...errors};
-    return Tuple2(
-        validateForm(consumeError: consumeError), this.remainingError);
+    return (
+    validateForm(consumeError: consumeError),
+    this.remainingError,
+    );
   }
 
   //

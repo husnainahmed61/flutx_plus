@@ -212,7 +212,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
                         size: iconSize ?? item.iconSize ?? 14,
                         color: iconColor ??
                             item.iconColor ??
-                            FxAppTheme.theme.colorScheme.onBackground,
+                            FxAppTheme.theme.colorScheme.onSurface,
                       ),
                   widget.labelDirection == Axis.horizontal
                       ? FxSpacing.width(showLabel ? widget.labelSpacing : 0)
@@ -225,7 +225,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
                               FxTextStyle.labelSmall(
                                   color: titleColor ??
                                       item.titleColor ??
-                                      FxAppTheme.theme.colorScheme.onBackground,
+                                      FxAppTheme.theme.colorScheme.onSurface,
                                   fontSize: widget.titleSize ?? item.titleSize),
                         )
                       : Container(),
@@ -279,7 +279,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
                 size: iconSize ?? item.iconSize ?? 24,
                 color: iconColor ??
                     item.iconColor ??
-                    FxAppTheme.theme.colorScheme.onBackground.withAlpha(150),
+                    FxAppTheme.theme.colorScheme.onSurface.withAlpha(150),
               );
     }
   }
@@ -326,7 +326,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
     activeContainerColor = widget.activeContainerColor ??
         FxAppTheme.theme.primaryColor.withAlpha(100);
     backgroundColor =
-        widget.backgroundColor ?? FxAppTheme.theme.colorScheme.background;
+        widget.backgroundColor ?? FxAppTheme.theme.colorScheme.surface;
     activeTitleStyle = widget.activeTitleStyle;
     titleStyle = widget.titleStyle;
     activeTitleColor = widget.activeTitleColor;
