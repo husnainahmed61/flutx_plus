@@ -1,4 +1,4 @@
-library styles;
+library;
 
 export 'app_theme.dart';
 export 'constant.dart';

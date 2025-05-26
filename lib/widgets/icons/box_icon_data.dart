@@ -1,4 +1,4 @@
-library flutter_boxicons;
+library;
 
 import 'package:flutter/widgets.dart';
 

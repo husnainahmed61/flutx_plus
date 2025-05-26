@@ -1,12 +1,10 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// There are mainly 2 types of bottomNavigationbar implemented using material Widgets.
 ///
 /// [FxBottomNavigationBarType.normal] -  In this, the bottom items/Icons can be highlighted in a normal way.
 /// [FxBottomNavigationBarType.containered] -  In this, the bottom items/Icons are kept in a container with text accompanied  by the icons.
 ///
+library;
+
 
 import 'package:flutter/material.dart';
 import 'package:flutx_plus/styles/styles.dart';
@@ -24,35 +22,6 @@ enum FxBottomNavigationBarType {
 }
 
 class FxBottomNavigationBar extends StatefulWidget {
-  final List<FxBottomNavigationBarItem>? itemList;
-  final Duration? animationDuration;
-  final Color? indicatorColor;
-  final double? indicatorSize;
-  final Decoration? indicatorDecoration;
-  final FxBottomNavigationBarType? fxBottomNavigationBarType;
-  final bool showLabel;
-  final bool? showActiveLabel;
-  final Color? activeContainerColor;
-  final Color? backgroundColor;
-  final Axis? labelDirection;
-  final double labelSpacing;
-  final TextStyle? activeTitleStyle;
-  final TextStyle? titleStyle;
-  final int initialIndex;
-  final Decoration? containerDecoration;
-  final BoxShape? containerShape;
-  final Color? activeTitleColor;
-  final Color? titleColor;
-  final double? activeTitleSize;
-  final double? titleSize;
-  final Color? iconColor;
-  final Color? activeIconColor;
-  final double? iconSize;
-  final double? activeIconSize;
-  final EdgeInsetsGeometry? outerPadding;
-  final EdgeInsetsGeometry? outerMargin;
-  final EdgeInsetsGeometry? containerPadding;
-  final double? containerRadius;
 
   FxBottomNavigationBar(
       {required this.itemList,
@@ -84,6 +53,35 @@ class FxBottomNavigationBar extends StatefulWidget {
       this.outerMargin,
       this.containerRadius,
       this.containerPadding});
+  final List<FxBottomNavigationBarItem>? itemList;
+  final Duration? animationDuration;
+  final Color? indicatorColor;
+  final double? indicatorSize;
+  final Decoration? indicatorDecoration;
+  final FxBottomNavigationBarType? fxBottomNavigationBarType;
+  final bool showLabel;
+  final bool? showActiveLabel;
+  final Color? activeContainerColor;
+  final Color? backgroundColor;
+  final Axis? labelDirection;
+  final double labelSpacing;
+  final TextStyle? activeTitleStyle;
+  final TextStyle? titleStyle;
+  final int initialIndex;
+  final Decoration? containerDecoration;
+  final BoxShape? containerShape;
+  final Color? activeTitleColor;
+  final Color? titleColor;
+  final double? activeTitleSize;
+  final double? titleSize;
+  final Color? iconColor;
+  final Color? activeIconColor;
+  final double? iconSize;
+  final double? activeIconSize;
+  final EdgeInsetsGeometry? outerPadding;
+  final EdgeInsetsGeometry? outerMargin;
+  final EdgeInsetsGeometry? containerPadding;
+  final double? containerRadius;
 
   @override
   _FxBottomNavigationBarState createState() => _FxBottomNavigationBarState();
@@ -119,7 +117,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
   late EdgeInsetsGeometry? outerMargin;
   late double? containerRadius;
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     setState(() {
       _currentIndex = _tabController!.index;
     });
@@ -129,7 +127,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
   void initState() {
     itemList = widget.itemList;
     _currentIndex = widget.initialIndex;
-    _tabController = new TabController(
+    _tabController = TabController(
         length: itemList!.length,
         initialIndex: widget.initialIndex,
         vsync: this);
@@ -149,13 +147,14 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
     super.initState();
   }
 
-  dispose() {
+  @override
+  void dispose() {
     super.dispose();
     _tabController!.dispose();
   }
 
   List<Widget> getListOfViews() {
-    List<Widget> viewList = [];
+    final List<Widget> viewList = [];
     for (int i = 0; i < itemList!.length; i++) {
       viewList.add(itemList![i].page!);
     }
@@ -163,7 +162,7 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
   }
 
   Widget getItem(int index) {
-    FxBottomNavigationBarItem item = itemList![index];
+    final FxBottomNavigationBarItem item = itemList![index];
 
     if (fxBottomNavigationBarType == FxBottomNavigationBarType.normal) {
       return Container(
@@ -285,14 +284,14 @@ class _FxBottomNavigationBarState extends State<FxBottomNavigationBar>
   }
 
   List<Widget> getListOfItems() {
-    List<Widget> list = [];
+    final List<Widget> list = [];
 
-    double singleWidth = (MediaQuery.of(context).size.width - 50) /
+    final double singleWidth = (MediaQuery.of(context).size.width - 50) /
         (itemList!.length +
             (widget.showLabel ? 0 : (showActiveLabel ? 0.5 : 0)));
 
     for (int i = 0; i < itemList!.length; i++) {
-      double containerWidth = widget.showLabel
+      final double containerWidth = widget.showLabel
           ? (singleWidth)
           : (showActiveLabel
               ? (i == _currentIndex ? singleWidth * 1.5 : singleWidth)

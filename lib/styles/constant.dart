@@ -1,14 +1,14 @@
 import 'package:flutx_plus/flutx.dart';
 
 class FxConstantData {
+
+  FxConstantData(
+      {this.containerRadius = 4, this.cardRadius = 4, this.buttonRadius = 4, this.defaultBreadCrumbItem});
   final double containerRadius;
   final double cardRadius;
   final double buttonRadius;
 
   final FxBreadcrumbItem? defaultBreadCrumbItem;
-
-  FxConstantData(
-      {this.containerRadius = 4, this.cardRadius = 4, this.buttonRadius = 4, this.defaultBreadCrumbItem});
 }
 
 class FxConstant {
@@ -16,7 +16,7 @@ class FxConstant {
 
   static FxConstantData get constant => _constant;
 
-  static setConstant(FxConstantData constantData) {
+  static void setConstant(FxConstantData constantData) {
     _constant = constantData;
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutx_plus/exceptions/base_exception.dart';
 
 class RouteException extends BaseException {
-  final String message;
 
   RouteException(this.message);
+  final String message;
 
   @override
   String toString() {

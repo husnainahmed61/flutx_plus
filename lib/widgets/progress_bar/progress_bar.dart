@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class FxProgressBar extends StatelessWidget {
-  final Color activeColor, inactiveColor;
-  final double progress, height, width, radius;
 
   const FxProgressBar(
       {this.activeColor = Colors.blue,
@@ -11,6 +9,8 @@ class FxProgressBar extends StatelessWidget {
       this.height = 1,
       this.width = 100,
       this.radius = 4});
+  final Color activeColor, inactiveColor;
+  final double progress, height, width, radius;
 
   @override
   Widget build(BuildContext context) {

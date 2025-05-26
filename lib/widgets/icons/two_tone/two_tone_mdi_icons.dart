@@ -7,7 +7,7 @@
 import 'two_tone_icon_data.dart';
 
 class FxTwoToneMdiIcons {
-  static const String _package = "mdi";
+  static const String _package = 'mdi';
 
   static String get package => _package;
 

@@ -9,6 +9,8 @@
 
 /// [FxAppThemeType.dark] - Applies all the properties for dark theme
 /// [FxAppThemeType.light] - Applies all the properties for light theme
+library;
+
 
 import 'package:flutter/material.dart';
 

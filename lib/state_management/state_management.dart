@@ -1,4 +1,4 @@
-library state_management;
+library;
 
 export 'builder.dart';
 export 'controller.dart';

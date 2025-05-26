@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 /// [FxSpacing] - provides spacing of various types.
+library;
+
 import 'package:flutter/material.dart';
 
 class FxSpacing {

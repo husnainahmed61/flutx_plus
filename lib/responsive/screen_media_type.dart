@@ -1,10 +1,12 @@
 enum FxScreenMediaType {
-  xs(576, "xs"), //Mobile
-  sm(768, "sm"), //Tablet
-  md(1200, "md"), //Laptop
-  lg(1400, "lg"), //Desktop
-  xl(1800, "xl"), //Large Desktop
-  xxl(4000, "xxl"); //Extra Large Desktop
+  xs(576, 'xs'), //Mobile
+  sm(768, 'sm'), //Tablet
+  md(1200, 'md'), //Laptop
+  lg(1400, 'lg'), //Desktop
+  xl(1800, 'xl'), //Large Desktop
+  xxl(4000, 'xxl'); //Extra Large Desktop
+
+  const FxScreenMediaType(this.width, this.className);
 
   bool get isMobile => this == FxScreenMediaType.xs;
 
@@ -25,7 +27,6 @@ enum FxScreenMediaType {
     FxScreenMediaType.xxl
   ];
 
-  const FxScreenMediaType(this.width, this.className);
 
   final double width;
 

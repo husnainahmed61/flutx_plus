@@ -10,7 +10,7 @@ class FxEmailValidator extends FxFieldValidatorRule<String> {
       }
     } else if (value != null && value.isNotEmpty) {
       if (!FxStringUtils.isEmail(value)) {
-        return "Please enter valid email";
+        return 'Please enter valid email';
       }
     }
     return null;
@@ -19,14 +19,14 @@ class FxEmailValidator extends FxFieldValidatorRule<String> {
 }
 
 class FxLengthValidator implements FxFieldValidatorRule<String> {
-  final bool short, required;
-  final int? min, max, exact;
 
   FxLengthValidator({this.required = true,
     this.exact,
     this.min,
     this.max,
     this.short = false});
+  final bool short, required;
+  final int? min, max, exact;
 
   @override
   String? validate(String? value, bool required, Map<String, dynamic> data) {
@@ -36,14 +36,14 @@ class FxLengthValidator implements FxFieldValidatorRule<String> {
       }
       if (exact != null && value.length != exact!) {
         return short
-            ? "Need $exact characters"
-            : "Need exact $exact characters";
+            ? 'Need $exact characters'
+            : 'Need exact $exact characters';
       }
       if (min != null && value.length < min!) {
-        return short ? "Need $min characters" : "Longer than $min characters";
+        return short ? 'Need $min characters' : 'Longer than $min characters';
       }
       if (max != null && value.length > max!) {
-        return short ? "Only $max characters" : "Lesser than $max characters";
+        return short ? 'Only $max characters' : 'Lesser than $max characters';
       }
     }
     return null;

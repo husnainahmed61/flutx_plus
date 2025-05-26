@@ -1,16 +1,14 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// [FxTwoToneIconData] - gives path of the Icons.
+library;
+
 
 class FxTwoToneIconData {
+
+  const FxTwoToneIconData(this.name,
+      {this.extension = 'svg', this.iconPack = 'mdi'});
   final String name;
   final String extension;
   final String iconPack;
-
-  const FxTwoToneIconData(this.name,
-      {this.extension = "svg", this.iconPack = "mdi"});
 
   @override
   bool operator ==(Object other) {
@@ -25,12 +23,7 @@ class FxTwoToneIconData {
   int get hashCode => super.hashCode;
 
   String get path {
-    return "packages/flutx/assets/icons/two_tone/" +
-        iconPack +
-        "/" +
-        name +
-        "." +
-        extension;
+    return 'packages/flutx_plus/assets/icons/two_tone/$iconPack/$name.$extension';
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ScaleRotateRoute extends PageRouteBuilder {
-  final Widget page;
 
   ScaleRotateRoute(this.page)
       : super(
@@ -42,4 +41,5 @@ class ScaleRotateRoute extends PageRouteBuilder {
             ),
           ),
         );
+  final Widget page;
 }

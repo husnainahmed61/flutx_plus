@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 /// [FxDottedLine] - gives a dotted line.
+library;
+
 
 import 'dart:ui';
 
@@ -13,10 +15,6 @@ bool _isEmpty(double? d) {
 }
 
 class FxDottedLineCorner {
-  final double leftTopCorner;
-  final double rightTopCorner;
-  final double rightBottomCorner;
-  final double leftBottomCorner;
 
   const FxDottedLineCorner({
     this.leftTopCorner = 0,
@@ -30,9 +28,27 @@ class FxDottedLineCorner {
         rightTopCorner = radius,
         rightBottomCorner = radius,
         leftBottomCorner = radius;
+  final double leftTopCorner;
+  final double rightTopCorner;
+  final double rightBottomCorner;
+  final double leftBottomCorner;
 }
 
 class FxDottedLine extends StatefulWidget {
+
+  FxDottedLine({
+    Key? key,
+    this.color = Colors.black,
+    this.height,
+    this.width,
+    this.dottedLength = 5.0,
+    this.space = 3.0,
+    this.strokeWidth = 1.0,
+    this.corner,
+    this.child,
+  }) : super(key: key) {
+    assert(width != null || height != null || child != null);
+  }
   final Color color;
 
   final double? height;
@@ -49,20 +65,6 @@ class FxDottedLine extends StatefulWidget {
 
   final Widget? child;
 
-  FxDottedLine({
-    Key? key,
-    this.color = Colors.black,
-    this.height,
-    this.width,
-    this.dottedLength = 5.0,
-    this.space = 3.0,
-    this.strokeWidth = 1.0,
-    this.corner,
-    this.child,
-  }) : super(key: key) {
-    assert(width != null || height != null || child != null);
-  }
-
   @override
   _FxDottedLineState createState() => _FxDottedLineState();
 }
@@ -76,10 +78,12 @@ class _FxDottedLineState extends State<FxDottedLine> {
   Widget build(BuildContext context) {
     if (_isEmpty(widget.width) &&
         _isEmpty(widget.height) &&
-        widget.child == null) return Container();
+        widget.child == null) {
+      return Container();
+    }
     if (widget.child != null) {
       tryToGetChildSize();
-      List<Widget> children = [];
+      final List<Widget> children = [];
       children.add(Container(
         clipBehavior: widget.corner == null ? Clip.none : Clip.antiAlias,
         decoration: BoxDecoration(
@@ -111,11 +115,11 @@ class _FxDottedLineState extends State<FxDottedLine> {
   void tryToGetChildSize() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       try {
-        RenderBox box =
+        final RenderBox box =
             childKey.currentContext!.findRenderObject() as RenderBox;
-        double tempWidth = box.size.width;
-        double tempHeight = box.size.height;
-        bool needUpdate = tempWidth != childWidth || tempHeight != childHeight;
+        final double tempWidth = box.size.width;
+        final double tempHeight = box.size.height;
+        final bool needUpdate = tempWidth != childWidth || tempHeight != childHeight;
         if (needUpdate) {
           setState(() {
             childWidth = tempWidth;
@@ -155,7 +159,7 @@ class _DottedLinePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var isHorizontal = size.width > size.height;
+    final isHorizontal = size.width > size.height;
     final Paint paint = Paint()
       ..isAntiAlias = true
       ..filterQuality = FilterQuality.high
@@ -164,8 +168,8 @@ class _DottedLinePainter extends CustomPainter {
       ..strokeWidth = strokeWidth;
 
     if (!isShape) {
-      double length = isHorizontal ? size.width : size.height;
-      double count = (length) / (dottedLength! + space!);
+      final double length = isHorizontal ? size.width : size.height;
+      final double count = (length) / (dottedLength! + space!);
       if (count < 2.0) return;
       var startOffset = Offset(0, 0);
       for (int i = 0; i < count.toInt(); i++) {
@@ -179,7 +183,7 @@ class _DottedLinePainter extends CustomPainter {
             (isHorizontal ? 0 : (dottedLength! + space!)));
       }
     } else {
-      Path path = Path();
+      final Path path = Path();
       path.addRRect(RRect.fromLTRBAndCorners(
         0,
         0,
@@ -194,7 +198,7 @@ class _DottedLinePainter extends CustomPainter {
             Radius.circular(corner != null ? corner!.rightBottomCorner : 0.0),
       ));
 
-      Path draw = buildDashPath(path, dottedLength, space);
+      final Path draw = buildDashPath(path, dottedLength, space);
       canvas.drawPath(draw, paint);
     }
   }
@@ -204,7 +208,7 @@ class _DottedLinePainter extends CustomPainter {
     for (PathMetric metric in path.computeMetrics()) {
       double start = 0.0;
       while (start < metric.length) {
-        double end = start + dottedLength!;
+        final double end = start + dottedLength!;
         r.addPath(metric.extractPath(start, end), Offset.zero);
         start = end + space!;
       }

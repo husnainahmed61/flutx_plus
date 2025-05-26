@@ -1,4 +1,4 @@
-library utils;
+library;
 
 export 'color_utils.dart';
 export 'distance_utils.dart';

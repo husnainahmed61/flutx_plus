@@ -41,7 +41,7 @@ class FxStringUtils {
   }
 
   static bool isSpecialCharacterIncluded(String string) {
-    String ch = "~`!@#\$%^&*.?_";
+    final String ch = '~`!@#\$%^&*.?_';
 
     for (int i = 0; i < string.length; i++) {
       if (ch.contains(string[i])) {
@@ -206,9 +206,9 @@ class FxStringUtils {
   }
 
   static bool isEmail(String email) {
-    Pattern pattern =
+    final Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$';
-    RegExp regex = new RegExp(pattern as String);
+    final RegExp regex = RegExp(pattern as String);
     log(regex.hasMatch(email).toString());
     return regex.hasMatch(email);
   }

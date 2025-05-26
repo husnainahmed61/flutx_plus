@@ -1,0 +1,33 @@
+# Use the official Dart lints (recommended set)
+include: package:lints/recommended.yaml
+
+analyzer:
+  # Exclude generated or unnecessary files from analysis
+  exclude:
+    - "**/*.g.dart" # Generated code (e.g. json_serializable, built_value)
+    - "**/*.freezed.dart" # Freezed-generated files
+    - "**/mocks.dart" # Mock classes (e.g. from Mockito)
+    - "lib/constants/env.dart" # Optional: environment config files
+    - "test/**" # Skip analysis in test files
+
+  # Enforce strict type safety
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+linter:
+  rules:
+    # Style & Readability
+    avoid_print: true
+    prefer_final_locals: true
+    always_declare_return_types: true
+    avoid_unused_constructor_parameters: true
+    sort_constructors_first: true
+    prefer_single_quotes: true
+
+    # Best Practices
+    hash_and_equals: true
+    unawaited_futures: true
+    use_build_context_synchronously: true
+
+    # Flutter Specific

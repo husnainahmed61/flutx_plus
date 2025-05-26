@@ -22,7 +22,7 @@ class FxScreenMedia {
   static Map<FxScreenMediaType, T> getFilledMedia<T>(
       Map<FxScreenMediaType, T>? map, T defaultValue,
       [bool reversed = false]) {
-    Map<FxScreenMediaType, T> d = {};
+    final Map<FxScreenMediaType, T> d = {};
     map ??= {};
     List list = FxScreenMediaType.list;
     if (reversed) {
@@ -36,14 +36,14 @@ class FxScreenMedia {
   }
 
   static Map<FxScreenMediaType, int> getFlexedDataFromString(String? string) {
-    string ??= "";
-    Map<FxScreenMediaType, int> d = {};
+    string ??= '';
+    final Map<FxScreenMediaType, int> d = {};
 
-    List<String> data = string.split(" ");
+    final List<String> data = string.split(' ');
     for (String item in data) {
       for (var type in FxScreenMediaType.values) {
         if (item.contains(type.className)) {
-          int? flex = int.tryParse(item.replaceAll("${type.className}-", ""));
+          final int? flex = int.tryParse(item.replaceAll('${type.className}-', ''));
           if (flex != null) {
             d[type] = flex;
             break;
@@ -57,15 +57,15 @@ class FxScreenMedia {
 
   static Map<FxScreenMediaType, FxDisplayType> getDisplayDataFromString(
       String? string) {
-    string ??= "";
-    Map<FxScreenMediaType, FxDisplayType> d = {};
+    string ??= '';
+    final Map<FxScreenMediaType, FxDisplayType> d = {};
 
-    List<String> data = string.split(" ");
+    final List<String> data = string.split(' ');
     for (String item in data) {
       for (var type in FxScreenMediaType.values) {
         if (item.contains(type.className)) {
-          FxDisplayType displayType = FxDisplayType.fromString(
-              item.replaceAll("${type.className}-", ""));
+          final FxDisplayType displayType = FxDisplayType.fromString(
+              item.replaceAll('${type.className}-', ''));
           d[type] = displayType;
           break;
         }

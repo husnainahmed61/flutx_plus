@@ -1,10 +1,7 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 ///There are mainly 2 styles of TextField.
 ///[FxTextFieldStyle.underlined] -  It gives underline to the textField.
 ///[FxTextFieldStyle.outlined] -  It gives outline to the textField.
+library;
 
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
@@ -25,6 +22,116 @@ enum FxTextFieldStyle {
 
 //@Deprecated("This widget is still in under maintenance. Try to use material widget")
 class FxTextField extends StatefulWidget {
+
+  FxTextField(
+      {this.controller,
+      this.focusNode,
+      this.decoration,
+      this.keyboardType,
+      this.textInputAction,
+      this.textCapitalization,
+      this.style,
+      this.strutStyle,
+      this.textAlign,
+      this.textAlignVertical,
+      this.textDirection,
+      this.autofocus,
+      this.obscuringCharacter,
+      this.obscureText,
+      this.autocorrect,
+      this.smartDashesType,
+      this.smartQuotesType,
+      this.enableSuggestions,
+      this.keyboardAppearance,
+      this.maxLines,
+      this.minLines,
+      this.expands,
+      this.readOnly,
+      this.toolbarOptions,
+      this.showCursor,
+      this.maxLength,
+      this.maxLengthEnforcement,
+      this.onChanged,
+      this.onEditingComplete,
+      this.onSubmitted,
+      this.onAppPrivateCommand,
+      this.inputFormatters,
+      this.enabled,
+      this.cursorWidth,
+      this.cursorHeight,
+      this.cursorRadius,
+      this.cursorColor,
+      this.selectionHeightStyle,
+      this.selectionWidthStyle,
+      this.scrollPadding,
+      this.enableInteractiveSelection,
+      this.selectionControls,
+      this.dragStartBehavior,
+      this.onTap,
+      this.mouseCursor,
+      this.buildCounter,
+      this.scrollPhysics,
+      this.scrollController,
+      this.autofillHints,
+      this.restorationId,
+//input decoration properties
+      this.icon,
+      this.labelText,
+      this.labelStyle,
+      this.helperText,
+      this.helperStyle,
+      this.helperMaxLines,
+      this.hintText,
+      this.hintStyle,
+      this.hintTextDirection,
+      this.hintMaxLines,
+      this.errorText,
+      this.errorStyle,
+      this.errorMaxLines,
+      this.floatingLabelBehavior,
+      this.isCollapsed,
+      this.isDense,
+      this.contentPadding,
+      this.prefixIcon,
+      this.prefixIconConstraints,
+      this.prefix,
+      this.prefixText,
+      this.prefixStyle,
+      this.suffixIcon,
+      this.suffix,
+      this.suffixText,
+      this.suffixStyle,
+      this.suffixIconConstraints,
+      this.counter,
+      this.counterText,
+      this.counterStyle,
+      this.filled,
+      this.fillColor,
+      this.focusColor,
+      this.hoverColor,
+      this.errorBorder,
+      this.focusedBorder,
+      this.focusedErrorBorder,
+      this.disabledBorder,
+      this.enabledBorder,
+      this.border,
+      this.textEnabled,
+      this.semanticCounterText,
+      this.alignLabelWithHint,
+      this.textFieldType = FxTextFieldType.name,
+      this.textFieldStyle = FxTextFieldStyle.outlined,
+      this.autoIcon,
+      this.enabledBorderColor,
+      this.focusedBorderColor,
+      this.enabledBorderRadius,
+      this.focusedBorderRadius,
+      this.labelTextColor,
+      this.prefixIconColor,
+      this.suffixIconColor,
+      this.autoFocusedBorder,
+      this.enableHint = true,
+      this.textColor,
+      this.allowSuffixIcon, this.contextMenuBuilder});
   final FxTextFieldType textFieldType;
   final FxTextFieldStyle textFieldStyle;
   final bool? autoIcon;
@@ -142,116 +249,6 @@ class FxTextField extends StatefulWidget {
   final String? semanticCounterText;
   final bool? alignLabelWithHint;
   final bool? allowSuffixIcon;
-
-  FxTextField(
-      {this.controller,
-      this.focusNode,
-      this.decoration,
-      this.keyboardType,
-      this.textInputAction,
-      this.textCapitalization,
-      this.style,
-      this.strutStyle,
-      this.textAlign,
-      this.textAlignVertical,
-      this.textDirection,
-      this.autofocus,
-      this.obscuringCharacter,
-      this.obscureText,
-      this.autocorrect,
-      this.smartDashesType,
-      this.smartQuotesType,
-      this.enableSuggestions,
-      this.keyboardAppearance,
-      this.maxLines,
-      this.minLines,
-      this.expands,
-      this.readOnly,
-      this.toolbarOptions,
-      this.showCursor,
-      this.maxLength,
-      this.maxLengthEnforcement,
-      this.onChanged,
-      this.onEditingComplete,
-      this.onSubmitted,
-      this.onAppPrivateCommand,
-      this.inputFormatters,
-      this.enabled,
-      this.cursorWidth,
-      this.cursorHeight,
-      this.cursorRadius,
-      this.cursorColor,
-      this.selectionHeightStyle,
-      this.selectionWidthStyle,
-      this.scrollPadding,
-      this.enableInteractiveSelection,
-      this.selectionControls,
-      this.dragStartBehavior,
-      this.onTap,
-      this.mouseCursor,
-      this.buildCounter,
-      this.scrollPhysics,
-      this.scrollController,
-      this.autofillHints,
-      this.restorationId,
-//input decoration properties
-      this.icon,
-      this.labelText,
-      this.labelStyle,
-      this.helperText,
-      this.helperStyle,
-      this.helperMaxLines,
-      this.hintText,
-      this.hintStyle,
-      this.hintTextDirection,
-      this.hintMaxLines,
-      this.errorText,
-      this.errorStyle,
-      this.errorMaxLines,
-      this.floatingLabelBehavior,
-      this.isCollapsed,
-      this.isDense,
-      this.contentPadding,
-      this.prefixIcon,
-      this.prefixIconConstraints,
-      this.prefix,
-      this.prefixText,
-      this.prefixStyle,
-      this.suffixIcon,
-      this.suffix,
-      this.suffixText,
-      this.suffixStyle,
-      this.suffixIconConstraints,
-      this.counter,
-      this.counterText,
-      this.counterStyle,
-      this.filled,
-      this.fillColor,
-      this.focusColor,
-      this.hoverColor,
-      this.errorBorder,
-      this.focusedBorder,
-      this.focusedErrorBorder,
-      this.disabledBorder,
-      this.enabledBorder,
-      this.border,
-      this.textEnabled,
-      this.semanticCounterText,
-      this.alignLabelWithHint,
-      this.textFieldType = FxTextFieldType.name,
-      this.textFieldStyle = FxTextFieldStyle.outlined,
-      this.autoIcon,
-      this.enabledBorderColor,
-      this.focusedBorderColor,
-      this.enabledBorderRadius,
-      this.focusedBorderRadius,
-      this.labelTextColor,
-      this.prefixIconColor,
-      this.suffixIconColor,
-      this.autoFocusedBorder,
-      this.enableHint = true,
-      this.textColor,
-      this.allowSuffixIcon, this.contextMenuBuilder});
 
   @override
   _FxTextFieldState createState() => _FxTextFieldState();
@@ -482,7 +479,7 @@ class _FxTextFieldState extends State<FxTextField> {
                       color: prefixIconColor,
                     )
                   : null);
-          labelText = "Email Address";
+          labelText = 'Email Address';
           keyboardType = keyboardType ?? TextInputType.emailAddress;
           break;
         case FxTextFieldType.password:
@@ -494,7 +491,7 @@ class _FxTextFieldState extends State<FxTextField> {
                       color: prefixIconColor,
                     )
                   : null);
-          labelText = "Password";
+          labelText = 'Password';
           keyboardType = keyboardType ?? TextInputType.text;
           obscureText = obscureText ?? true;
           break;
@@ -506,7 +503,7 @@ class _FxTextFieldState extends State<FxTextField> {
                       color: prefixIconColor,
                     )
                   : null);
-          labelText = "Name";
+          labelText = 'Name';
           keyboardType = keyboardType ?? TextInputType.text;
           break;
         case FxTextFieldType.address:
@@ -517,7 +514,7 @@ class _FxTextFieldState extends State<FxTextField> {
                       color: prefixIconColor,
                     )
                   : null);
-          labelText = "Address";
+          labelText = 'Address';
           keyboardType = keyboardType ?? TextInputType.streetAddress;
           break;
         case FxTextFieldType.mobileNumber:
@@ -528,7 +525,7 @@ class _FxTextFieldState extends State<FxTextField> {
                       color: prefixIconColor,
                     )
                   : null);
-          labelText = "Mobile Number";
+          labelText = 'Mobile Number';
           keyboardType = keyboardType ?? TextInputType.phone;
           break;
         }

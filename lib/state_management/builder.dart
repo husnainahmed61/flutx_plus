@@ -5,6 +5,17 @@ import 'controller.dart';
 typedef FxControllerBuilder<T> = Widget Function(T controller);
 
 class FxBuilder<T extends FxController> extends StatefulWidget {
+
+  const FxBuilder({
+    super.key,
+    required this.controller,
+    required this.builder,
+    this.initState,
+    this.dispose,
+    this.didChangeDependencies,
+    this.didUpdateWidget,
+    this.theme,
+  });
   final FxControllerBuilder<T> builder;
   final T? controller;
   final ThemeData? theme;
@@ -14,17 +25,6 @@ class FxBuilder<T extends FxController> extends StatefulWidget {
       didChangeDependencies;
   final void Function(FxBuilder oldWidget, FxBuilderState<T> state)?
       didUpdateWidget;
-
-  const FxBuilder({
-    Key? key,
-    required this.controller,
-    required this.builder,
-    this.initState,
-    this.dispose,
-    this.didChangeDependencies,
-    this.didUpdateWidget,
-    this.theme,
-  }) : super(key: key);
 
   @override
   FxBuilderState<T> createState() => FxBuilderState<T>();

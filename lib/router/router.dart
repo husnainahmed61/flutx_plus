@@ -1,10 +1,3 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-/// [FxRouter] - able to create add and map routes.
-/// Still in development
-
 import 'package:flutter/material.dart';
 import 'package:flutx_plus/exceptions/route_exception.dart';
 
@@ -24,10 +17,11 @@ export 'route_builders/slide_left_route.dart';
 export 'route_builders/slide_right_route.dart';
 export 'routes.dart';
 
+/// The [FxRouter] handles navigation and route mapping.
 class FxRouter {
   static T? getArgs<T>(BuildContext context) {
     try {
-      Object? args = ModalRoute.of(context)?.settings.arguments;
+      final Object? args = ModalRoute.of(context)?.settings.arguments;
       if (args is T) return args;
       return null;
     } catch (e) {
@@ -44,15 +38,15 @@ class FxRouter {
   }
 
   static FxRoute? getSecuredRouteFromRouteName(String routeName) {
-    Uri uri = Uri.parse(routeName);
-    var _route = uri.path;
-    FxRoute? route = _getRouteFromRouteName(_route);
+    final Uri uri = Uri.parse(routeName);
+    final route0 = uri.path;
+    final FxRoute? route = _getRouteFromRouteName(route0);
     if (route == null) return null;
 
     if (route.middlewares != null && route.middlewares!.isNotEmpty) {
       for (FxMiddleware middleware in route.middlewares!) {
-        String redirectedRouteName = middleware.handle(_route);
-        if (redirectedRouteName.compareTo(_route) != 0) {
+        final String redirectedRouteName = middleware.handle(route0);
+        if (redirectedRouteName.compareTo(route0) != 0) {
           return getSecuredRouteFromRouteName(redirectedRouteName);
         }
       }
@@ -65,9 +59,10 @@ class FxRouter {
     String routeName, {
     Object? arguments,
   }) async {
-    FxRoute? route = getSecuredRouteFromRouteName(routeName);
-    if (route == null)
+    final FxRoute? route = getSecuredRouteFromRouteName(routeName);
+    if (route == null){
       throw RouteException("'$routeName' Route is not implemented");
+    }
     return Navigator.of(context).pushNamed<T>(route.name, arguments: arguments);
   }
 
@@ -76,9 +71,10 @@ class FxRouter {
     String routeName, {
     Object? arguments,
   }) async {
-    FxRoute? route = getSecuredRouteFromRouteName(routeName);
-    if (route == null)
+    final FxRoute? route = getSecuredRouteFromRouteName(routeName);
+    if (route == null) {
       throw RouteException("'$routeName' Route is not implemented");
+    }
     return Navigator.of(context)
         .pushReplacementNamed<T, TO>(route.name, arguments: arguments);
   }

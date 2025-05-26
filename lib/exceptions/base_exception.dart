@@ -28,7 +28,7 @@ class BaseException extends FxException {
   void printOnConsole() {
     // return;
     if (exception != null) {
-      StringBuffer stringBuffer = StringBuffer();
+      final StringBuffer stringBuffer = StringBuffer();
       stringBuffer.write('----- ${exception.runtimeType} ------ \n');
       stringBuffer.write('message : $exception');
       log(
@@ -41,6 +41,6 @@ class BaseException extends FxException {
 
   @override
   String toString() {
-    return "This is base exception";
+    return 'This is base exception';
   }
 }

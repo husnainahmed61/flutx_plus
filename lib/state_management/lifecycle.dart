@@ -1,9 +1,9 @@
 typedef ValueUpdater<T> = T Function();
 
 class InternalFinalCallback<T> {
-  ValueUpdater<T>? _callback;
 
   InternalFinalCallback({ValueUpdater<T>? callback}) : _callback = callback;
+  ValueUpdater<T>? _callback;
 
   T call() => _callback!.call();
 }

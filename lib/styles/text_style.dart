@@ -8,6 +8,8 @@
 // found in the LICENSE file.
 
 /// [FxTextStyle] - gives 13 different type of styles to the text on the basis of size
+library;
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +36,7 @@ enum FxTextType {
 }
 
 // TextStyle
-typedef TextStyle GoogleFontFunction({
+typedef GoogleFontFunction = TextStyle Function({
   TextStyle? textStyle,
   Color? color,
   Color? backgroundColor,
@@ -94,9 +96,7 @@ class FxTextStyle {
       double? height,
       double? wordSpacing,
       double? fontSize}) {
-    double? finalFontSize = fontSize != null
-        ? fontSize
-        : (textStyle == null ? 40 : textStyle.fontSize);
+    final double? finalFontSize = fontSize ?? (textStyle == null ? 40 : textStyle.fontSize);
 
     Color finalColor = color ?? FxAppTheme.theme.colorScheme.onSurface;
     finalColor = xMuted
@@ -522,7 +522,7 @@ class FxTextStyle {
   static Map<int, FontWeight> get defaultFontWeight => _defaultFontWeight;
 
   //-------------------Reset Font Styles---------------------------------
-  static resetFontStyles() {
+  static void resetFontStyles() {
     _fontFamily = GoogleFonts.ibmPlexSans;
 
     _defaultFontWeight = {

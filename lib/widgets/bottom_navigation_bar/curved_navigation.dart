@@ -3,16 +3,6 @@ import 'package:flutter/material.dart';
 typedef _LetIndexPage = bool Function(int value);
 
 class FxCurvedNavigationBar extends StatefulWidget {
-  final List<Widget> items;
-  final int index;
-  final Color color;
-  final Color? buttonBackgroundColor;
-  final Color backgroundColor;
-  final ValueChanged<int>? onTap;
-  final _LetIndexPage letIndexChange;
-  final Curve animationCurve;
-  final Duration animationDuration;
-  final double height;
 
   FxCurvedNavigationBar({
     Key? key,
@@ -27,10 +17,20 @@ class FxCurvedNavigationBar extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
   })  : letIndexChange = letIndexChange ?? ((_) => true),
-        assert(items.length >= 1),
+        assert(items.isNotEmpty),
         assert(0 <= index && index < items.length),
         assert(0 <= height && height <= 75.0),
         super(key: key);
+  final List<Widget> items;
+  final int index;
+  final Color color;
+  final Color? buttonBackgroundColor;
+  final Color backgroundColor;
+  final ValueChanged<int>? onTap;
+  final _LetIndexPage letIndexChange;
+  final Curve animationCurve;
+  final Duration animationDuration;
+  final double height;
 
   @override
   FxCurvedNavigationBarState createState() => FxCurvedNavigationBarState();
@@ -88,7 +88,7 @@ class FxCurvedNavigationBarState extends State<FxCurvedNavigationBar>
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Container(
       color: widget.backgroundColor,
       height: widget.height,
@@ -178,18 +178,18 @@ class FxCurvedNavigationBarState extends State<FxCurvedNavigationBar>
 }
 
 class NavCustomPainter extends CustomPainter {
-  late double loc;
-  late double s;
-  Color color;
-  TextDirection textDirection;
 
   NavCustomPainter(
       double startingLoc, int itemsLength, this.color, this.textDirection) {
     final span = 1.0 / itemsLength;
     s = 0.2;
-    double l = startingLoc + (span - s) / 2;
+    final double l = startingLoc + (span - s) / 2;
     loc = textDirection == TextDirection.rtl ? 0.8 - l : l;
   }
+  late double loc;
+  late double s;
+  Color color;
+  TextDirection textDirection;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -230,11 +230,6 @@ class NavCustomPainter extends CustomPainter {
 }
 
 class NavButton extends StatelessWidget {
-  final double position;
-  final int length;
-  final int index;
-  final ValueChanged<int> onTap;
-  final Widget child;
 
   NavButton({
     required this.onTap,
@@ -243,6 +238,11 @@ class NavButton extends StatelessWidget {
     required this.index,
     required this.child,
   });
+  final double position;
+  final int length;
+  final int index;
+  final ValueChanged<int> onTap;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {

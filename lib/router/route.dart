@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'middlewares/middleware.dart';
 
 class FxRoute {
+
+  FxRoute({required this.name, required this.builder, this.middlewares});
   String name;
   WidgetBuilder builder;
   List<FxMiddleware>? middlewares;
-
-  FxRoute({required this.name, required this.builder, this.middlewares});
 }

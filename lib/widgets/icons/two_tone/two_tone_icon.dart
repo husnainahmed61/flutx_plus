@@ -1,8 +1,6 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// [FxTwoToneIcon] - provides two tone Icons.
+library;
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -13,11 +11,11 @@ export 'two_tone_icon_data.dart';
 export 'two_tone_mdi_icons.dart';
 
 class FxTwoToneIcon extends StatefulWidget {
+
+  const FxTwoToneIcon(this.iconData, {this.color, this.size = 24});
   final FxTwoToneIconData iconData;
   final ColorFilter? color;
   final double? size;
-
-  const FxTwoToneIcon(this.iconData, {this.color, this.size = 24});
 
   @override
   _FxTwoToneIconState createState() => _FxTwoToneIconState();
@@ -51,8 +49,8 @@ class _FxTwoToneIconState extends State<FxTwoToneIcon> {
           );
   }
 
-  getIconDataString() async {
-    String data = await rootBundle.loadString(widget.iconData.path);
+  Future<void> getIconDataString() async {
+    final String data = await rootBundle.loadString(widget.iconData.path);
 
     setState(() {
       iconDataString = data;

@@ -8,14 +8,6 @@ import 'package:collection/collection.dart';
 
 
 class FxFlex extends StatelessWidget {
-  final List<FxFlexItem> children;
-  final WrapAlignment wrapAlignment;
-  final WrapCrossAlignment wrapCrossAlignment;
-  final WrapAlignment runAlignment;
-  final bool contentPadding;
-
-  // final Map<ScreenMediaType, int>? flex;
-  final double? spacing, runSpacing;
 
   const FxFlex(
       {super.key,
@@ -26,8 +18,16 @@ class FxFlex extends StatelessWidget {
       this.contentPadding = true,
       this.spacing,
       this.runSpacing});
+  final List<FxFlexItem> children;
+  final WrapAlignment wrapAlignment;
+  final WrapCrossAlignment wrapCrossAlignment;
+  final WrapAlignment runAlignment;
+  final bool contentPadding;
 
-  getPadding(index, length) {
+  // final Map<ScreenMediaType, int>? flex;
+  final double? spacing, runSpacing;
+
+  EdgeInsets getPadding(index, length) {
     if (contentPadding) {
       return FxSpacing.x((spacing ?? flexSpacing) / 2);
     } else {
@@ -40,8 +40,8 @@ class FxFlex extends StatelessWidget {
   Widget build(BuildContext context) {
     return FxResponsive(
       builder: (BuildContext context, BoxConstraints constraints, screenMediaType) {
-        double width = constraints.maxWidth;
-        List<Widget> list = [];
+        final double width = constraints.maxWidth;
+        final List<Widget> list = [];
         for (List<FxFlexItem> lCol in getGrouped(screenMediaType)) {
           list.addAll(lCol.mapIndexed((index, col) => Container(
                 width: getWidthFromFlex(width, col.flex[screenMediaType] ?? FxScreenMedia.flexColumns,
@@ -72,12 +72,12 @@ class FxFlex extends StatelessWidget {
   }
 
   List<List<FxFlexItem>> getGrouped(FxScreenMediaType type) {
-    List<List<FxFlexItem>> list = [];
+    final List<List<FxFlexItem>> list = [];
     var flexCount = 0;
     List<FxFlexItem> iList = [];
     for (FxFlexItem col in children) {
       if (col.display[type]!.isBlock) {
-        int flex = col.flex[type]!;
+        final int flex = col.flex[type]!;
         if (flexCount + flex <= 12) {
           iList.add(col);
           flexCount += flex;

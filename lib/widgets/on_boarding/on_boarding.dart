@@ -1,8 +1,6 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// [FxOnBoarding] - Gives a custom page onBoarding widget with 2 buttons for SKIP and DONE.
+library;
+
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -15,10 +13,6 @@ export 'ui/pages.dart';
 export 'ui/pager_indicator.dart';
 
 class FxOnBoarding extends StatefulWidget {
-  final List<PageViewModel> pages;
-  final Color selectedIndicatorColor;
-  final Color unSelectedIndicatorColor;
-  final Widget skipWidget, doneWidget;
 
   const FxOnBoarding(
       {Key? key,
@@ -28,25 +22,20 @@ class FxOnBoarding extends StatefulWidget {
       required this.skipWidget,
       required this.doneWidget})
       : super(key: key);
+  final List<PageViewModel> pages;
+  final Color selectedIndicatorColor;
+  final Color unSelectedIndicatorColor;
+  final Widget skipWidget, doneWidget;
 
   @override
-  _FxOnBoardingState createState() => new _FxOnBoardingState();
+  _FxOnBoardingState createState() => _FxOnBoardingState();
 }
 
 class _FxOnBoardingState extends State<FxOnBoarding>
     with TickerProviderStateMixin {
-  StreamController<SlideUpdate>? slideUpdateStream;
-  AnimatedPageDragger? animatedPageDragger;
-
-  int activeIndex = 0;
-
-  SlideDirection? slideDirection = SlideDirection.none;
-  int nextPageIndex = 0;
-
-  double? slidePercent = 0.0;
 
   _FxOnBoardingState() {
-    slideUpdateStream = new StreamController<SlideUpdate>();
+    slideUpdateStream = StreamController<SlideUpdate>();
 
     slideUpdateStream!.stream.listen((SlideUpdate event) {
       setState(() {
@@ -63,7 +52,7 @@ class _FxOnBoardingState extends State<FxOnBoarding>
           }
         } else if (event.updateType == UpdateType.doneDragging) {
           if (slidePercent! > 0.5) {
-            animatedPageDragger = new AnimatedPageDragger(
+            animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.open,
               slidePercent: slidePercent,
@@ -71,7 +60,7 @@ class _FxOnBoardingState extends State<FxOnBoarding>
               vsync: this,
             );
           } else {
-            animatedPageDragger = new AnimatedPageDragger(
+            animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.close,
               slidePercent: slidePercent,
@@ -96,6 +85,15 @@ class _FxOnBoardingState extends State<FxOnBoarding>
       });
     });
   }
+  StreamController<SlideUpdate>? slideUpdateStream;
+  AnimatedPageDragger? animatedPageDragger;
+
+  int activeIndex = 0;
+
+  SlideDirection? slideDirection = SlideDirection.none;
+  int nextPageIndex = 0;
+
+  double? slidePercent = 0.0;
 
   @override
   void dispose() {
@@ -105,23 +103,23 @@ class _FxOnBoardingState extends State<FxOnBoarding>
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
-      body: new Stack(
+      body: Stack(
         children: [
           FxSinglePage(
             viewModel: widget.pages[activeIndex],
             percentVisible: 1.0,
           ),
-          new FxPageReveal(
+          FxPageReveal(
             revealPercent: slidePercent,
-            child: new FxSinglePage(
+            child: FxSinglePage(
               viewModel: widget.pages[nextPageIndex],
               percentVisible: slidePercent,
             ),
           ),
-          new FxPagerIndicator(
-            viewModel: new PagerIndicatorViewModel(
+          FxPagerIndicator(
+            viewModel: PagerIndicatorViewModel(
                 widget.pages,
                 activeIndex,
                 slideDirection,
@@ -131,10 +129,10 @@ class _FxOnBoardingState extends State<FxOnBoarding>
                 widget.skipWidget,
                 widget.doneWidget),
           ),
-          new FxPageDragger(
+          FxPageDragger(
             canDragLeftToRight: activeIndex > 0,
             canDragRightToLeft: activeIndex < widget.pages.length - 1,
-            slideUpdateStream: this.slideUpdateStream,
+            slideUpdateStream: slideUpdateStream,
           )
         ],
       ),

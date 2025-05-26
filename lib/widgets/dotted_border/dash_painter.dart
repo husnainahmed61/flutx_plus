@@ -5,13 +5,6 @@ import 'package:flutx_plus/widgets/dotted_border/dash_path.dart';
 typedef PathBuilder = Path Function(Size);
 
 class DashPainter extends CustomPainter {
-  final double strokeWidth;
-  final List<double> dashPattern;
-  final Color color;
-  final BorderType borderType;
-  final Radius radius;
-  final StrokeCap strokeCap;
-  final PathBuilder? customPath;
 
   DashPainter({
     this.strokeWidth = 2,
@@ -24,26 +17,33 @@ class DashPainter extends CustomPainter {
   }) {
     assert(dashPattern.isNotEmpty, 'Dash Pattern cannot be empty');
   }
+  final double strokeWidth;
+  final List<double> dashPattern;
+  final Color color;
+  final BorderType borderType;
+  final Radius radius;
+  final StrokeCap strokeCap;
+  final PathBuilder? customPath;
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
+    final Paint paint = Paint()
       ..strokeWidth = strokeWidth
       ..color = color
       ..strokeCap = strokeCap
       ..style = PaintingStyle.stroke;
 
-    Path _path;
+    Path path;
     if (customPath != null) {
-      _path = dashPath(
+      path = dashPath(
         customPath!(size),
         dashArray: CircularIntervalList(dashPattern),
       );
     } else {
-      _path = _getPath(size);
+      path = _getPath(size);
     }
 
-    canvas.drawPath(_path, paint);
+    canvas.drawPath(path, paint);
   }
 
   /// Returns a [Path] based on the the [borderType] parameter
@@ -69,9 +69,9 @@ class DashPainter extends CustomPainter {
 
   /// Returns a circular path of [size]
   Path _getCirclePath(Size size) {
-    double w = size.width;
-    double h = size.height;
-    double s = size.shortestSide;
+    final double w = size.width;
+    final double h = size.height;
+    final double s = size.shortestSide;
 
     return Path()
       ..addRRect(
@@ -131,9 +131,9 @@ class DashPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(DashPainter oldDelegate) {
-    return oldDelegate.strokeWidth != this.strokeWidth ||
-        oldDelegate.color != this.color ||
-        oldDelegate.dashPattern != this.dashPattern ||
-        oldDelegate.borderType != this.borderType;
+    return oldDelegate.strokeWidth != strokeWidth ||
+        oldDelegate.color != color ||
+        oldDelegate.dashPattern != dashPattern ||
+        oldDelegate.borderType != borderType;
   }
 }

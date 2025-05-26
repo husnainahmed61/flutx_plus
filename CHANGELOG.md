@@ -24,3 +24,6 @@
 ## 1.0.4
 
 * Updated: static analysis.
+## 1.0.5
+
+* Updated: static analysis.

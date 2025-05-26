@@ -9,7 +9,7 @@ class FxControllerStore {
     tag ??= controller.getTag();
     _history.add(tag);
     if (_controllers.containsKey(tag) && _controllers[tag] is T) {
-      T controller = _controllers[tag] as T;
+      final T controller = _controllers[tag] as T;
       controller.save = controller.save && save;
       return controller;
     }
@@ -39,7 +39,7 @@ class FxControllerStore {
     tag = tag ?? controller?.getTag();
     _history.remove(tag);
     if (_controllers.containsKey(tag) && _controllers[tag] is T) {
-      T controller = _controllers[tag] as T;
+      final T controller = _controllers[tag] as T;
       _controllers.remove(tag);
       return controller;
     }
@@ -47,7 +47,7 @@ class FxControllerStore {
   }
 
   static FxController? last() {
-    if (_history.length > 0) {
+    if (_history.isNotEmpty) {
       return _controllers[_history.last];
     }
     return null;

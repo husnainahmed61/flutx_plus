@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class RotationRoute extends PageRouteBuilder {
-  final Widget page;
   RotationRoute(this.page)
       : super(
           pageBuilder: (
@@ -30,4 +29,5 @@ class RotationRoute extends PageRouteBuilder {
             child: child,
           ),
         );
+  final Widget page;
 }

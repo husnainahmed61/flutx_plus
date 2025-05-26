@@ -1,31 +1,16 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// There are mainly 2 types of card .
 ///
 /// [FxCard.bordered] - provides border to the card.
 /// [FxCard.rounded] - provides rounded shape to the card for the given height and width of the card.
 ///
+library;
+
 
 import 'package:flutter/material.dart';
 import 'package:flutx_plus/styles/styles.dart';
 import 'package:flutx_plus/utils/spacing.dart';
 
 class FxCard extends StatelessWidget {
-  final Widget child;
-  final BorderRadius? borderRadius;
-  final double? borderRadiusAll, paddingAll, marginAll;
-  final EdgeInsetsGeometry? padding, margin;
-  final Color? color;
-  final GestureTapCallback? onTap;
-  final bool bordered;
-  final Border? border;
-  final Clip? clipBehavior;
-  final BoxShape? boxShape;
-  final FxShadow? shadow;
-  final double? width, height;
-  final Color? splashColor;
 
   const FxCard(
       {Key? key,
@@ -110,10 +95,23 @@ class FxCard extends StatelessWidget {
       this.width,
       this.height})
       : super(key: key);
+  final Widget child;
+  final BorderRadius? borderRadius;
+  final double? borderRadiusAll, paddingAll, marginAll;
+  final EdgeInsetsGeometry? padding, margin;
+  final Color? color;
+  final GestureTapCallback? onTap;
+  final bool bordered;
+  final Border? border;
+  final Clip? clipBehavior;
+  final BoxShape? boxShape;
+  final FxShadow? shadow;
+  final double? width, height;
+  final Color? splashColor;
 
   @override
   Widget build(BuildContext context) {
-    FxShadow myShadow = shadow ?? FxShadow();
+    final FxShadow myShadow = shadow ?? FxShadow();
     return InkWell(
       borderRadius: boxShape != BoxShape.circle
           ? borderRadius ??

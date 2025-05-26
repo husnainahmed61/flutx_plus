@@ -1,23 +1,21 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// [FxMeasureSize] - measures the size of any particular widget
+library;
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/scheduler.dart';
 
-typedef void OnWidgetSizeChange(Size? size);
+typedef OnWidgetSizeChange = void Function(Size? size);
 
 class FxMeasureSize extends StatefulWidget {
-  final Widget child;
-  final OnWidgetSizeChange onChange;
 
   const FxMeasureSize({
     Key? key,
     required this.onChange,
     required this.child,
   }) : super(key: key);
+  final Widget child;
+  final OnWidgetSizeChange onChange;
 
   @override
   _FxMeasureSizeState createState() => _FxMeasureSizeState();
@@ -37,10 +35,10 @@ class _FxMeasureSizeState extends State<FxMeasureSize> {
   var oldSize;
 
   void postFrameCallback(_) {
-    var context = widgetKey.currentContext;
+    final context = widgetKey.currentContext;
     if (context == null) return;
 
-    var newSize = context.size;
+    final newSize = context.size;
     if (oldSize == newSize) return;
 
     oldSize = newSize;

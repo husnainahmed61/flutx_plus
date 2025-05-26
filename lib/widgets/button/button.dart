@@ -1,8 +1,6 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /// Three types of button implemented from Material Button.
+library;
+
 
 /// [FxButtonType.elevated] - gives elevation to the button along with some height and shadow.
 /// [FxButtonType.outlined] - gives outline to the button
@@ -13,42 +11,6 @@ import 'package:flutx_plus/styles/styles.dart';
 enum FxButtonType { elevated, outlined, text }
 
 class FxButton extends StatelessWidget {
-  final FxButtonType? buttonType;
-
-  final ButtonStyle? style;
-
-  final VoidCallback? onPressed;
-
-  final bool? disabled;
-  final bool? block;
-  final bool soft;
-
-  final WidgetStateProperty<EdgeInsetsGeometry>? msPadding;
-  final EdgeInsetsGeometry? padding;
-
-  final WidgetStateProperty<double>? msElevation;
-  final double? elevation;
-
-  final WidgetStateProperty<EdgeInsetsGeometry>? msShape;
-  final OutlinedBorder? shape;
-  final BorderRadiusGeometry? borderRadius;
-  final double? borderRadiusAll;
-
-  final WidgetStateProperty<Color>? msBackgroundColor;
-  final Color? backgroundColor;
-
-  final WidgetStateProperty<BorderSide>? msSide;
-  final BorderSide? side;
-  final Color borderColor;
-
-  final MaterialTapTargetSize? tapTargetSize;
-
-  final WidgetStateProperty<Color>? msShadowColor;
-  final Color? shadowColor;
-
-  final Color? splashColor;
-
-  final Widget child;
 
   FxButton(
       {this.onPressed,
@@ -257,11 +219,47 @@ class FxButton extends StatelessWidget {
         this.shadowColor,
         this.tapTargetSize = MaterialTapTargetSize.padded,
         this.splashColor});
+  final FxButtonType? buttonType;
+
+  final ButtonStyle? style;
+
+  final VoidCallback? onPressed;
+
+  final bool? disabled;
+  final bool? block;
+  final bool soft;
+
+  final WidgetStateProperty<EdgeInsetsGeometry>? msPadding;
+  final EdgeInsetsGeometry? padding;
+
+  final WidgetStateProperty<double>? msElevation;
+  final double? elevation;
+
+  final WidgetStateProperty<EdgeInsetsGeometry>? msShape;
+  final OutlinedBorder? shape;
+  final BorderRadiusGeometry? borderRadius;
+  final double? borderRadiusAll;
+
+  final WidgetStateProperty<Color>? msBackgroundColor;
+  final Color? backgroundColor;
+
+  final WidgetStateProperty<BorderSide>? msSide;
+  final BorderSide? side;
+  final Color borderColor;
+
+  final MaterialTapTargetSize? tapTargetSize;
+
+  final WidgetStateProperty<Color>? msShadowColor;
+  final Color? shadowColor;
+
+  final Color? splashColor;
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     Widget button;
-    Color bgColor = backgroundColor ?? Theme.of(context).colorScheme.primary;
+    final Color bgColor = backgroundColor ?? Theme.of(context).colorScheme.primary;
 
     if (buttonType == FxButtonType.outlined) {
       button = OutlinedButton(
@@ -296,11 +294,14 @@ class FxButton extends StatelessWidget {
                   elevation: msElevation ??
                       WidgetStateProperty.resolveWith<double>(
                             (Set<WidgetState> states) {
-                          if (states.contains(WidgetState.disabled))
+                          if (states.contains(WidgetState.disabled)) {
                             return 0;
-                          else if (states.contains(WidgetState.pressed))
+                          } else if (states.contains(WidgetState.pressed)){
                             return elevation! * 2;
-                          else if (states.contains(WidgetState.hovered)) return elevation! * 1.5;
+                          }
+                          else if (states.contains(WidgetState.hovered)) {
+                            return elevation! * 1.5;
+                          }
                           return elevation!;
                         },
                       ),

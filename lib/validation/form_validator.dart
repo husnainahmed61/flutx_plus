@@ -9,9 +9,9 @@ class FxFormValidator {
   bool consumeError = true;
 
   // Map<String, FxFieldValidator> _validators = {};
-  Map<String, dynamic> _validators = {};
-  Map<String, TextEditingController> _controllers = {};
-  Map<String, dynamic> _data = {};
+  final Map<String, dynamic> _validators = {};
+  final Map<String, TextEditingController> _controllers = {};
+  final Map<String, dynamic> _data = {};
 
   void addField<T>(String name,
       {bool required = false,
@@ -31,16 +31,16 @@ class FxFormValidator {
       {bool required = false, List<FxFieldValidatorRule<T>> validators = const [], String? label}) {
     return (T? value) {
       label ??= name.capitalize;
-      String? error = getError(name);
+      final String? error = getError(name);
       if (error != null) {
         return error;
       }
 
       if (required && (value == null || (value.toString().isEmpty))) {
-        return "$label is required";
+        return '$label is required';
       }
       for (FxFieldValidatorRule validator in validators) {
-        String? validationError = validator.validate(value, required, getData());
+        final String? validationError = validator.validate(value, required, getData());
         if (validationError != null) {
           return validationError;
         }
@@ -51,16 +51,16 @@ class FxFormValidator {
 
   String? getError(String name) {
     if (errors.containsKey(name)) {
-      dynamic error = errors[name];
+      final dynamic error = errors[name];
 
       if (error is List && error.isNotEmpty) {
-        String errorText = error[0].toString();
+        final String errorText = error[0].toString();
         if (consumeError) {
           remainingError.remove(name);
         }
         return errorText;
       } else {
-        String errorText = error.toString();
+        final String errorText = error.toString();
         if (consumeError) {
           remainingError.remove(name);
         }
@@ -87,7 +87,7 @@ class FxFormValidator {
   }
 
   Map<String, dynamic> getData() {
-    var map = {
+    final map = {
       ..._data,
     };
     for (var key in _controllers.keys) {

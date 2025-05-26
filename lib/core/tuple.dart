@@ -1,10 +1,5 @@
-@Deprecated("We remove due to dart 3 has a multi-value return feature coming")
+@Deprecated('We remove due to dart 3 has a multi-value return feature coming')
 class Tuple2<T1, T2> {
-  /// Returns the first item of the tuple
-  final T1 item1;
-
-  /// Returns the second item of the tuple
-  final T2 item2;
 
   /// Creates a new tuple value with the specified items.
   const Tuple2(this.item1, this.item2);
@@ -17,6 +12,11 @@ class Tuple2<T1, T2> {
 
     return Tuple2<T1, T2>(items[0] as T1, items[1] as T2);
   }
+  /// Returns the first item of the tuple
+  final T1 item1;
+
+  /// Returns the second item of the tuple
+  final T2 item2;
 
   /// Returns a tuple with the first item set to the specified value.
   Tuple2<T1, T2> withItem1(T1 v) => Tuple2<T1, T2>(v, item2);
@@ -50,14 +50,6 @@ class Tuple2<T1, T2> {
 //
 // /// Represents a 3-tuple, or triple.
 class Tuple3<T1, T2, T3> {
-  /// Returns the first item of the tuple
-  final T1 item1;
-
-  /// Returns the second item of the tuple
-  final T2 item2;
-
-  /// Returns the third item of the tuple
-  final T3 item3;
 
   /// Creates a new tuple value with the specified items.
   const Tuple3(this.item1, this.item2, this.item3);
@@ -71,6 +63,14 @@ class Tuple3<T1, T2, T3> {
     return Tuple3<T1, T2, T3>(
         items[0] as T1, items[1] as T2, items[2] as T3);
   }
+  /// Returns the first item of the tuple
+  final T1 item1;
+
+  /// Returns the second item of the tuple
+  final T2 item2;
+
+  /// Returns the third item of the tuple
+  final T3 item3;
 
   /// Returns a tuple with the first item set to the specified value.
   Tuple3<T1, T2, T3> withItem1(T1 v) =>

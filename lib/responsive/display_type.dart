@@ -1,6 +1,6 @@
 enum FxDisplayType {
-  none("none"),
-  block("block");
+  none('none'),
+  block('block');
 
   const FxDisplayType(this.className);
 

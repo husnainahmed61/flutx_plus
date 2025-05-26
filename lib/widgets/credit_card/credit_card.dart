@@ -1,8 +1,5 @@
-// Copyright 2023 The FlutX Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+library;
 
-///
 
 /// [FxCreditCard] - customisable credit card with all the necessary details in it.
 
@@ -18,16 +15,12 @@ import 'package:flutx_plus/widgets/text_field/text_field.dart';
 import 'package:flutx_plus/utils/formatters/card_month_input_formatter.dart';
 import 'package:flutx_plus/utils/formatters/card_number_input_formatter.dart';
 
-typedef void OnCreditCardNumberChanged(String creditCardNumber);
-typedef void OnCreditCardDateChanged(String creditCardDate);
-typedef void OnCreditCardNameChanged(String creditCardName);
-typedef void OnCreditCardCVVChanged(String creditCardCVV);
+typedef OnCreditCardNumberChanged = void Function(String creditCardNumber);
+typedef OnCreditCardDateChanged = void Function(String creditCardDate);
+typedef OnCreditCardNameChanged = void Function(String creditCardName);
+typedef OnCreditCardCVVChanged = void Function(String creditCardCVV);
 
 class FxCreditCard extends StatefulWidget {
-  final OnCreditCardNumberChanged onCreditCardNumberChanged;
-  final OnCreditCardDateChanged onCreditCardDateChanged;
-  final OnCreditCardNameChanged onCreditCardNameChanged;
-  final OnCreditCardCVVChanged onCreditCardCVVChanged;
 
   const FxCreditCard(
       {Key? key,
@@ -36,6 +29,10 @@ class FxCreditCard extends StatefulWidget {
       required this.onCreditCardNameChanged,
       required this.onCreditCardCVVChanged})
       : super(key: key);
+  final OnCreditCardNumberChanged onCreditCardNumberChanged;
+  final OnCreditCardDateChanged onCreditCardDateChanged;
+  final OnCreditCardNameChanged onCreditCardNameChanged;
+  final OnCreditCardCVVChanged onCreditCardCVVChanged;
 
   @override
   _FxCreditCardState createState() => _FxCreditCardState();
@@ -47,10 +44,10 @@ class _FxCreditCardState extends State<FxCreditCard>
   bool isFront = true;
 
   //Credit card
-  String creditCardNumber = "4040 4040 4040 4040";
-  String creditCardDate = "MM/YY";
-  String creditCardName = "Holder Name";
-  String creditCardCVV = "739";
+  String creditCardNumber = '4040 4040 4040 4040';
+  String creditCardDate = 'MM/YY';
+  String creditCardName = 'Holder Name';
+  String creditCardCVV = '739';
   Color creditCardColor = const Color(0xff334382);
   TextEditingController? cardNumberTextEditingController,
       cardDateTextEditingController,
@@ -63,7 +60,7 @@ class _FxCreditCardState extends State<FxCreditCard>
       creditNameFocusNode,
       creditCVVFocusNode;
 
-  flip({bool goFront = false, bool goBack = false}) async {
+  Future<void> flip({bool goFront = false, bool goBack = false}) async {
     if (goFront && isFront) {
       return;
     }
@@ -77,7 +74,8 @@ class _FxCreditCardState extends State<FxCreditCard>
     await _controller.forward();
   }
 
-  initState() {
+  @override
+  void initState() {
     super.initState();
 
     _controller = AnimationController(
@@ -98,8 +96,9 @@ class _FxCreditCardState extends State<FxCreditCard>
         if (cardNumberTextEditingController!.text.isNotEmpty) {
           creditCardNumber = cardNumberTextEditingController!.text;
           widget.onCreditCardNumberChanged(creditCardNumber);
-        } else
-          creditCardNumber = "4040 4040 4040 4040";
+        } else {
+          creditCardNumber = '4040 4040 4040 4040';
+        }
       });
     });
 
@@ -108,8 +107,9 @@ class _FxCreditCardState extends State<FxCreditCard>
         if (cardDateTextEditingController!.text.isNotEmpty) {
           creditCardDate = cardDateTextEditingController!.text;
           widget.onCreditCardDateChanged(creditCardDate);
-        } else
-          creditCardDate = "MM/YY";
+        } else {
+          creditCardDate = 'MM/YY';
+        }
       });
     });
 
@@ -118,8 +118,9 @@ class _FxCreditCardState extends State<FxCreditCard>
         if (cardNameTextEditingController!.text.isNotEmpty) {
           creditCardName = cardNameTextEditingController!.text;
           widget.onCreditCardNameChanged(creditCardName);
-        } else
-          creditCardName = "Holder Name";
+        } else {
+          creditCardName = 'Holder Name';
+        }
       });
     });
 
@@ -128,8 +129,9 @@ class _FxCreditCardState extends State<FxCreditCard>
         if (cardCVVTextEditingController!.text.isNotEmpty) {
           creditCardCVV = cardCVVTextEditingController!.text;
           widget.onCreditCardCVVChanged(creditCardCVV);
-        } else
-          creditCardCVV = "739";
+        } else {
+          creditCardCVV = '739';
+        }
       });
     });
 
@@ -148,11 +150,13 @@ class _FxCreditCardState extends State<FxCreditCard>
     });
   }
 
-  dispose() {
+  @override
+  void dispose() {
     super.dispose();
     cardNumberTextEditingController!.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: FxAppTheme.theme.scaffoldBackgroundColor,
@@ -163,7 +167,7 @@ class _FxCreditCardState extends State<FxCreditCard>
             onPressed: () => Navigator.of(context).pop(),
             icon: Icon(Icons.chevron_left),
           ),
-          title: FxText.labelLarge("Add Card", fontWeight: 600),
+          title: FxText.labelLarge('Add Card', fontWeight: 600),
           actions: <Widget>[
             InkWell(
                 onTap: () {
@@ -220,7 +224,7 @@ class _FxCreditCardState extends State<FxCreditCard>
                                             color: Colors.white,
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(4))),
-                                        child: FxText.bodyLarge("VISA",
+                                        child: FxText.bodyLarge('VISA',
                                             fontWeight: 700,
                                             color: creditCardColor),
                                       ),
@@ -379,7 +383,7 @@ class _FxCreditCardState extends State<FxCreditCard>
                                               color: Colors.white,
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(4))),
-                                          child: FxText.bodyLarge("VISA",
+                                          child: FxText.bodyLarge('VISA',
                                               fontWeight: 700,
                                               color: creditCardColor),
                                         ),

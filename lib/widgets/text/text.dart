@@ -4,38 +4,37 @@
 
 /// There are mainly 13 types of Text widgets.
 /// h1,h2,h3,h4,h5,h6,sh1,sh2,b1,b2,button,caption,overline - This is the order of its size.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutx_plus/styles/styles.dart';
 
 class FxText extends StatelessWidget {
-  //Key
 
-  final Key? key;
-
-  final String text;
-  final TextStyle? style;
-  final int? fontWeight;
-  final bool muted, xMuted;
-  final double? letterSpacing;
-  final Color? color;
-  final TextDecoration decoration;
-  final double? height;
-  final double wordSpacing;
-  final double? fontSize;
-  final FxTextType textType;
-
-  //Text Style
-  final TextAlign? textAlign;
-  final int? maxLines;
-  final Locale? locale;
-  final TextOverflow? overflow;
-  final String? semanticsLabel;
-  final bool? softWrap;
-  final StrutStyle? strutStyle;
-  final TextDirection? textDirection;
-  final TextHeightBehavior? textHeightBehavior;
-  final TextScaler? textScaleFactor;
-  final TextWidthBasis? textWidthBasis;
+  FxText.bodyLarge(this.text,
+      {this.style,
+      this.fontWeight,
+      this.muted = false,
+      this.xMuted = false,
+      this.letterSpacing,
+      this.color,
+      this.decoration = TextDecoration.none,
+      this.height,
+      this.wordSpacing = 0,
+      this.fontSize,
+      this.textType = FxTextType.bodyLarge,
+      this.key,
+      this.textAlign,
+      this.maxLines,
+      this.locale,
+      this.overflow,
+      this.semanticsLabel,
+      this.softWrap,
+      this.strutStyle,
+      this.textDirection,
+      this.textHeightBehavior,
+      this.textScaleFactor,
+      this.textWidthBasis});
 
   FxText(this.text,
       {this.style,
@@ -362,31 +361,6 @@ class FxText extends StatelessWidget {
       this.textScaleFactor,
       this.textWidthBasis});
 
-  FxText.bodyLarge(this.text,
-      {this.style,
-      this.fontWeight,
-      this.muted = false,
-      this.xMuted = false,
-      this.letterSpacing,
-      this.color,
-      this.decoration = TextDecoration.none,
-      this.height,
-      this.wordSpacing = 0,
-      this.fontSize,
-      this.textType = FxTextType.bodyLarge,
-      this.key,
-      this.textAlign,
-      this.maxLines,
-      this.locale,
-      this.overflow,
-      this.semanticsLabel,
-      this.softWrap,
-      this.strutStyle,
-      this.textDirection,
-      this.textHeightBehavior,
-      this.textScaleFactor,
-      this.textWidthBasis});
-
   FxText.bodyMedium(this.text,
       {this.style,
       this.fontWeight,
@@ -436,6 +410,34 @@ class FxText extends StatelessWidget {
       this.textHeightBehavior,
       this.textScaleFactor,
       this.textWidthBasis});
+  //Key
+
+  final Key? key;
+
+  final String text;
+  final TextStyle? style;
+  final int? fontWeight;
+  final bool muted, xMuted;
+  final double? letterSpacing;
+  final Color? color;
+  final TextDecoration decoration;
+  final double? height;
+  final double wordSpacing;
+  final double? fontSize;
+  final FxTextType textType;
+
+  //Text Style
+  final TextAlign? textAlign;
+  final int? maxLines;
+  final Locale? locale;
+  final TextOverflow? overflow;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextDirection? textDirection;
+  final TextHeightBehavior? textHeightBehavior;
+  final TextScaler? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
 
   @override
   Widget build(BuildContext context) {

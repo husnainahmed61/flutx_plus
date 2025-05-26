@@ -19,16 +19,16 @@ mixin FxFormDataMixin {
       String? label}) {
     return (String? value) {
       label ??= name.capitalize;
-      String? error = getError(name);
+      final String? error = getError(name);
       if (error != null) {
         return error;
       }
 
       if (required && (value == null || value.isEmpty)) {
-        return "$label is required";
+        return '$label is required';
       }
       for (FxFormValidator validator in validators) {
-        String? validationError = validator.validate(value);
+        final String? validationError = validator.validate(value);
         if (validationError != null) {
           return validationError;
         }
@@ -39,16 +39,16 @@ mixin FxFormDataMixin {
 
   String? getError(String name) {
     if (errors.containsKey(name)) {
-      dynamic error = errors[name];
+      final dynamic error = errors[name];
 
       if (error is List && error.isNotEmpty) {
-        String errorText = error[0].toString();
+        final String errorText = error[0].toString();
         if (consumeError) {
           remainingError.remove(name);
         }
         return errorText;
       } else {
-        String errorText = error.toString();
+        final String errorText = error.toString();
         if (consumeError) {
           remainingError.remove(name);
         }
@@ -71,10 +71,10 @@ mixin FxFormDataMixin {
       Map<String, dynamic> errors,
       {bool consumeError = true}) {
     this.errors = errors;
-    this.remainingError = {...errors};
+    remainingError = {...errors};
     return (
     validateForm(consumeError: consumeError),
-    this.remainingError,
+    remainingError,
     );
   }
 

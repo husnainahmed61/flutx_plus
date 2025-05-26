@@ -1,4 +1,4 @@
-library widgets;
+library;
 
 export 'bottom_navigation_bar/bottom_navigation_bar.dart';
 export 'bottom_navigation_bar/curved_navigation.dart';

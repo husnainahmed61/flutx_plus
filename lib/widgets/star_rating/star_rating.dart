@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 class FxStarRating extends StatelessWidget {
-  final double rating, size, spacing;
-  final Color activeColor, inactiveColor;
-  final bool inactiveStarFilled, showInactive;
-  final IconData? activeIcon, halfIcon, inactiveIcon;
 
   FxStarRating(
       {this.rating = 5,
@@ -17,32 +13,36 @@ class FxStarRating extends StatelessWidget {
       this.activeIcon,
       this.halfIcon,
       this.inactiveIcon});
+  final double rating, size, spacing;
+  final Color activeColor, inactiveColor;
+  final bool inactiveStarFilled, showInactive;
+  final IconData? activeIcon, halfIcon, inactiveIcon;
 
   @override
   Widget build(BuildContext context) {
-    int ratingCount = rating.floor();
+    final int ratingCount = rating.floor();
 
     bool isHalf = (ratingCount != rating);
-    List<Widget> _stars = [];
+    final List<Widget> stars = [];
     for (int i = 0; i < 5; i++) {
       if (i < ratingCount) {
-        _stars.add(Icon(
+        stars.add(Icon(
           activeIcon ?? Icons.star,
           color: activeColor,
           size: size,
         ));
 
-        _stars.add(SizedBox(width: spacing));
+        stars.add(SizedBox(width: spacing));
       } else {
         if (isHalf) {
           isHalf = false;
-          _stars.add(Icon(
+          stars.add(Icon(
             halfIcon ?? Icons.star_half_outlined,
             color: activeColor,
             size: size,
           ));
         } else if (showInactive) {
-          _stars.add(Icon(
+          stars.add(Icon(
             inactiveStarFilled
                 ? (activeIcon ?? Icons.star)
                 : (inactiveIcon ?? Icons.star_outline),
@@ -50,9 +50,9 @@ class FxStarRating extends StatelessWidget {
             size: size,
           ));
         }
-        _stars.add(SizedBox(width: spacing));
+        stars.add(SizedBox(width: spacing));
       }
     }
-    return Row(mainAxisSize: MainAxisSize.min, children: _stars);
+    return Row(mainAxisSize: MainAxisSize.min, children: stars);
   }
 }

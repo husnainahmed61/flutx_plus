@@ -8,15 +8,15 @@ import 'pages.dart';
 import 'package:flutter/material.dart';
 
 class FxPagerIndicator extends StatelessWidget {
-  final PagerIndicatorViewModel? viewModel;
 
   FxPagerIndicator({
     this.viewModel,
   });
+  final PagerIndicatorViewModel? viewModel;
 
   @override
   Widget build(BuildContext context) {
-    List<PageBubble> bubbles = [];
+    final List<PageBubble> bubbles = [];
     for (var i = 0; i < viewModel!.pages.length; ++i) {
       final page = viewModel!.pages[i];
 
@@ -34,12 +34,12 @@ class FxPagerIndicator extends StatelessWidget {
         percentActive = 0.0;
       }
 
-      bool isActive = ((i == viewModel!.activeIndex) && percentActive! > 0.4 ||
+      final bool isActive = ((i == viewModel!.activeIndex) && percentActive! > 0.4 ||
           (i != viewModel!.activeIndex && percentActive! > 0.6));
 
       bubbles.add(
-        new PageBubble(
-          viewModel: new PageBubbleViewModel(
+        PageBubble(
+          viewModel: PageBubbleViewModel(
               page.color,
               percentActive,
               isActive,
@@ -60,9 +60,9 @@ class FxPagerIndicator extends StatelessWidget {
       translation -= bubbleWidth * viewModel!.slidePercent!;
     }
 
-    return new Column(
+    return Column(
       children: <Widget>[
-        new Expanded(child: new Container()),
+        Expanded(child: Container()),
         Container(
           margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
           child: Row(
@@ -84,10 +84,10 @@ class FxPagerIndicator extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: new Transform(
+                child: Transform(
                   transform:
-                      new Matrix4.translationValues(translation, 0.0, 0.0),
-                  child: new Row(
+                      Matrix4.translationValues(translation, 0.0, 0.0),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: bubbles,
                   ),
@@ -122,14 +122,6 @@ enum SlideDirection {
 }
 
 class PagerIndicatorViewModel {
-  final List<PageViewModel> pages;
-  final int activeIndex;
-  final SlideDirection? slideDirection;
-  final double? slidePercent;
-  final Color selectedIndicatorColor;
-  final Color unSelectedIndicatorColor;
-  final Widget skipWidget;
-  final Widget doneWidget;
 
   PagerIndicatorViewModel(
     this.pages,
@@ -141,25 +133,33 @@ class PagerIndicatorViewModel {
     this.skipWidget,
     this.doneWidget,
   );
+  final List<PageViewModel> pages;
+  final int activeIndex;
+  final SlideDirection? slideDirection;
+  final double? slidePercent;
+  final Color selectedIndicatorColor;
+  final Color unSelectedIndicatorColor;
+  final Widget skipWidget;
+  final Widget doneWidget;
 }
 
 class PageBubble extends StatelessWidget {
-  final PageBubbleViewModel? viewModel;
 
   PageBubble({this.viewModel});
+  final PageBubbleViewModel? viewModel;
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return Container(
       margin: EdgeInsets.only(right: 2),
       width: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
       height: 4,
       child: Row(
         children: <Widget>[
-          new Container(
+          Container(
               width: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
               height: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
-              decoration: new BoxDecoration(
+              decoration: BoxDecoration(
                 //shape: BoxShape.circle,
                 color: viewModel!.isActive
                     ? viewModel!.selectedIndicatorColor
@@ -174,11 +174,6 @@ class PageBubble extends StatelessWidget {
 }
 
 class PageBubbleViewModel {
-  final Color color;
-  final double? activePercent;
-  final bool isActive;
-  final Color selectedIndicatorColor;
-  final Color unSelectedIndicatorColor;
 
   PageBubbleViewModel(
     this.color,
@@ -187,4 +182,9 @@ class PageBubbleViewModel {
     this.selectedIndicatorColor,
     this.unSelectedIndicatorColor,
   );
+  final Color color;
+  final double? activePercent;
+  final bool isActive;
+  final Color selectedIndicatorColor;
+  final Color unSelectedIndicatorColor;
 }
